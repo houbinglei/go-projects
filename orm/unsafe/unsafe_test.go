@@ -1,6 +1,7 @@
 package unsafe
 
 import (
+	"github.com/stretchr/testify/assert"
 	"testing"
 )
 
@@ -32,4 +33,15 @@ func TestPrintFieldOffset(t *testing.T) {
 		})
 	}
 
+}
+
+func TestUnsafeAccessor_Field(t *testing.T) {
+	type User struct {
+		Name string
+		Age  int
+	}
+	u := &User{Name: "Tom", Age: 18}
+	accessor := NewUnsafeAccessor(u)
+	val := accessor.GetField("Age")
+	assert.Equal(t, 18, val)
 }

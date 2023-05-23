@@ -1,0 +1,2 @@
+- 运行测试，需要的包
+  - go get "github.com/stretchr/testify/assert"
